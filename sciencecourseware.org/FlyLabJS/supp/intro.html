@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/supp/intro.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:33 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="description" content="FlyLab JS fruit fly genetics simulator">
+<meta name="keywords" content="genetics,Mendel,inheritance">
+<meta name="author" content="Robert Desharnais">
+<title>FlyLab JS - Introduction</title>
+<script src='../../../cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latestb198.js?config=TeX-MML-AM_CHTML' async></script>
+<script src="supportDocs.js"></script>
+<link rel=stylesheet type="text/css" href="supportDocs.css">
+</head>
+<body onload="getReady();">
+<p id="messages" style="position: absolute; left: -500%;" aria-live="polite"></p>
+
+<!----- Main Div for Applet ----------------------------->
+<div class="main">
+
+	<!----- Banner ------------------ ------------------------>
+
+	<div role="banner">
+	   <img src="logo.png" style="position: absolute" alt="Logo image of a small fruit fly" title="Logo image of a small fruit fly">
+	   <div class="logotxt"><span class="logotxt1">Fly</span><span class="logotxt2">Lab JS</span></div>
+	</div>
+	<nav role="navigation" class="menu" id="main"><span aria-selected="true"><strong>Introduction</strong></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../index-2.html"><em>Fly</em>Lab JS</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="abbr.html">Abbreviations</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="help.html">Help</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="instructor.html">Instructors</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rdeshar@calstatela.edu">Contact</a></nav>
+	<div role="complementary" class="copyright">Copyright &copy; 2019, 2022, Robert A. Desharnais, Ph.D.<br>
+	Virtual Courseware Project, ScienceCourseware.org</div>
+
+	<!------ End of Banner ----------------------------------->
+	
+	<!----- Expand/Collapse Buttons -------------------------->
+
+	<div class="ecBtnDiv">
+		<button type="button" class="ecBtn" id="expandBtn" aria-label="expand all sections" onclick="expandAll()"><u>E</u>xpand All Sections</button>&nbsp;&nbsp;
+		<button type="button" class="ecBtn" id="collapseBtn" aria-label="collapse all sections" onclick="collapseAll()"><u>C</u>ollapse All Sections</button>
+	</div>
+
+	<!------ End of Expand/Collapse Buttons ------------------>
+
+	<!----- Support Content ---------------------------------->
+	<div class="supportContent">
+
+		<h1>Introduction to <em>Fly</em>Lab JS</h1>
+		
+		<ul class="accordian" aria-label="Accordion Control Group Buttons">
+			
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Overview" aria-controls="content-1" aria-expanded="false" id="accordion-control-1"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Overview</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-1">
+					<p class="txt"><em>Fly</em>Lab JS is an educational application for learning the principles of genetic inheritance. Users design crosses between female and male fruit flies carrying one or more genetic mutations. They can make hypotheses for the mode of inheritance of genetic traits and test their hypotheses by selecting fruit flies with different visible mutations, mating them, and analyzing the phenotypic ratios of the offspring. Results can be recorded into an online notebook which can be exported as a web page for later use.</p>
+
+					<p class="txt">With <em>Fly</em>Lab JS, it is possible to study multiple generations of offspring, and perform testcrosses and backcrosses. <em>Fly</em>Lab JS is a versatile program; it can be used to learn elementary genetic principles such as dominance and recessive alleles, and Mendelian ratios, or more complex concepts such as sex-linkage, epistasis, recombination, and genetic mapping.</p>
+				</div>
+			</li>
+				
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Learning Objectives" aria-controls="content-2" aria-expanded="false" id="accordion-control-2"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Learning Objectives</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-2">
+					<p class="txt">The purpose of this activity is to:
+						<ul>
+							<li>understand the relationship between an organism’s genotype and its phenotype;</li>
+							<li>understand and apply the principles of genetic inheritance;</li>
+							<li>demonstrate the importance of statistical analysis;</li>
+							<li>apply recombination data to map the location of genes on a chromosome.</li>
+						</ul>
+					</p>
+
+					<p class="txt">Additionally, <em>Fly</em>Lab JS can be used to demonstrate the scientific method. Using this application, one can:
+						<ul>
+							<li>make observations and propose hypotheses;</li>
+							<li>design experiments to test hypotheses;</li>
+							<li>perform statistical analyses on experimental data;</li>
+							<li>interpret the results of an experiment and decide whether the hypothesis is supported or rejected.</li>
+						</ul>
+					</p>
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Prerequisites" aria-controls="content-3" aria-expanded="false" id="accordion-control-3"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Prerequisites</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-3">
+					<p class="txt">Before using <em>Fly</em>Lab JS, users should be familiar with the following concepts:
+						<ul>
+							<li>chromosome structure, and the stages of gamete formation by meiosis;</li>
+							<li>the basic terminology and principles of Mendelian genetics, including genes and alleles, recessive and dominant traits, sex-linked inheritance, epistasis, lethal mutations, crossovers, and recombination;</li>
+							<li>the use of a Punnett square to predict the results of genetic crosses;</li>
+							<li>how epistasis and lethality can alter Mendelian ratios;</li>
+							<li>cis and trans arrangements of alleles on homologous chromosomes;</li>
+							<li>computation of chromosomal map distances using recombination data;</li>
+							<li>chi-squared statistical analysis.</li>
+						</ul>
+					</p>
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Quick Tour of FlyLab JS" aria-controls="content-4" aria-expanded="false" id="accordion-control-4"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Quick Tour of <em>Fly</em>Lab JS</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-4">
+					<p class="txt">Let’s take a quick tour of <em>Fly</em>Lab JS. We will conduct a short experiment where we examine the pattern of inheritance of two traits, sepia eyes and curved wings, through two generations. Follow the step-by-step instructions below.</p>
+						<ol>
+							<li>Open a new browser tab or window and go to the <strong><em>Fly</em>Lab JS</strong> application.</li>
+							<li>If it’s not already selected, click on the <strong>Design</strong> tab.</li>
+							<li>Click on the button for <strong>Eye Color</strong> on the left side of the view. The available eye color mutations will be displayed.</li>
+							<li>Select the radio button below the <strong>sepia</strong> option. The eye color of the designed fly will change.</li>
+							<li>Click the <strong>Select Fly for Mating</strong> button in the lower right corner of the Design view. The view will change to the Mate view. We have now selected a female fly with sepia eye color for mating.</li>
+							<li>Click the <strong>Design Fly</strong> button below the grey image of a male fly. The view will change back to the Design view.</li>
+							<li>Click on the button for <strong>Wing Shape</strong> on the left side of the view. The available wing shape mutations will be displayed.</li>
+							<li>Select the radio button below the <strong>curved</strong> option. The wing shape of the designed fly will change.</li>
+							<li>Click the <strong>Select Fly for Mating</strong> button in the lower right corner of the Design view. The view will change to the Mate view. We have now selected a male fly with curved wings for mating.</li>
+							<li>Click the <strong>Mate Flies</strong> button in the center of the view. The two flies will be mated and a cross will appear in the Crosses view. The parents and offspring are shown. All the offspring are wild type flies.</li>
+							<li>Let’s select a female and male fly from the offspring for mating. Click the <strong>Select to Mate</strong> button below the female offspring. A green check mark will appear on the fly image.</li>
+							<li>Click the <strong>Select to Mate</strong> button below the male offspring. The view will change to the Mate view showing the wild type female and male flies that we selected.</li>
+							<li>Click the <strong>Mate Flies</strong> button in the center of the view. The two flies will be mated and a second cross will appear in the Crosses view. The parents and offspring are shown. You will need to scroll down to see all the offspring.</li>
+							<li>Let’s add an image of an offspring fly with both mutations. Scroll to the bottom of the view and click on the small button with a <strong>magnifier icon</strong> below the female fly with both the sepia eye (SE) and curved wing (C) mutations. A large image of the fly will appear.</li>
+							<li>Click on the <strong>Add Fly Image to Lab Notes</strong> button below the magnified fly image. The view will change to the Lab Notes view. We have added an image of the fly to our lab notebook. There is a box to type comments.</li>
+							<li>Click on the <strong>Analyze</strong> tab above the lab notes view. A table will be displayed with the numbers and proportions of each phenotype among the offspring. These are the data from our experiment.</li>
+							<li>The number of females and males are similar for each phenotype. Click the check box option to <strong>Ignore sex of flies</strong>. The data are now organized only by phenotype.</li>
+							<li>Let’s test the hypothesis that these phenotypes follow a 6:2:2:1 ratio. (See the section below on Statistical Analyses for an explanation of the chi-squared test.) Click the check box option to <strong>Include a Test of Hypothesis</strong>. The table will expand to low you to enter your hypothesis and test it.</li>
+							<li>In the four text fields in the hypothesis column enter <strong>6</strong>, <strong>2</strong>, <strong>2</strong>, and <strong>1</strong> and then click the <strong>Test Your Hypothesis</strong> button. The results of your test are displayed below the table. If the level of significance is less than 0.05 we should reject the hypothesis.</li>
+							<li>Let’s add the results of this test to our lab notebook. Click the <strong>Add Results to Lab Notes</strong> button at the bottom the view. A copy of the table appears in the lab notebook. There is a box to type comments or conclusions.</li>
+							<li>Let’s export the lab notes to a web page that we can bookmark, copy, or print. This is necessary because all our results will be lost if we close or navigate away from the <em>Fly</em>Lab JS web page. Click the <strong>Export as Web Page</strong> button at the top of the Lab Notes view. A web page with a copy of our lab notes will open in a new browser tab. Save the URL for this page if you want to return to it later.</li>
+						</ol>
+					<p class="txt">For more details on how to use <em>Fly</em>Lab JS, click on the <strong>Help</strong> menu item at the top of <em>Fly</em>Lab JS.</p>
+				</div>
+			</li>
+
+			<li class="accordian">			
+				<button class="secTitle" aria-label="section for Fly</em>Lab JS Assumptions" aria-controls="content-5" aria-expanded="false" id="accordion-control-5"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td><em>Fly</em>Lab JS Assumptions</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-5">
+					<p class="txt">Traits are organized into groups such as &ldquo;bristles&rdquo; and &ldquo;body colors.&rdquo; These are listed on the left side of the Design View. Traits within a group are controlled by different genes (genetic loci); they are not variations of the same gene. To keep things simple, <em>Fly</em>Lab JS restricts you to selecting only one mutation from each group. However, this is a software restriction, not a restriction imposed by nature! For example, in <em>Fly</em>Lab JS a fly cannot have the alleles for both brown eyes and purple eyes. However, in nature it is possible for a real fruit fly to be heterozygous for both those genes.</p>
+
+					<p class="txt">The following assumptions must be considered when using <em>Fly</em>Lab JS:</p>
+					
+						<ul>
+							<li>If the wild type trait within a group is selected, all the genes within that group will be homozygous for the wild type alleles.</li>
+							<li>If you select a mutation that is not lethal, the fly will be homozygous for the selected mutation. All the other traits within that group will be homozygous for the wild type allele.</li>
+							<li>If you select a lethal mutation, the fly is made heterozygous for that mutation. (A homozygous fly would be dead!) All the other traits within that group will be homozygous for the wild type allele.</li>
+							<li>If you select two lethal mutations which are on the same chromosome, then the mutant alleles will be placed on different homologous chromosomes; this is called the &ldquo;trans&rdquo; arrangement.</li>
+							<li>If you select three or more lethal mutations on the same chromosome, <em>Fly</em>Lab JS will divide the mutant alleles as evenly as possible between the two homologous chromosomes.</li>
+							<li>Males are achiasmatic; that is, there is no recombination in males during meiosis. This is a peculiar attribute of <em>Drosophila</em> fruit flies (and some other insects) and <em>Fly</em>Lab JS adheres to it. Crossing over and recombination can occur only in female flies.</li>
+							<li>Crossover events occur at random between two genes on the same chromosome. If two genes are one centimorgan apart, the probability of a crossover event is 0.01.</li>
+							<li>Multiple crossover events can occur between genes on the same chromosome. The farther apart two genes are on a chromosome, the higher the average number of crossover events between them.</li>
+							<li>If one selects a fly for mating from a group of offspring flies, and that group of flies is a mixture of homozygous dominant genotypes and heterozygous genotypes, then the probability that the selected fly will homozygous dominant or heterozygous is based on the expected proportion of the genotypes in the offspring group. For example, if paisley eyes is a recessive trait, and a group of wild type male offspring has an expected composition of 1/3 homozygous dominant and 2/3 heterozygous genotypes, then the single fly that is selected for mating will be either homozygous dominant, with a probability of 1/3, or heterozygous with a probability of 2/3. The same rule applies when there are two or more genetic loci involved.</li>
+						</ul>
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Statistical Analyses" aria-controls="content-6" aria-expanded="false" id="accordion-control-6"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Statistical Analyses</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-6">
+					<p class="txt">FlyLab JS give you the option of conducting a statistical analysis of a proposed hypothesis for the ratios among the different types of offspring.</p>
+					
+					<p class="txt">For example, based on some genetic mechanism that you are proposing, you believe that there should be a 4 to 1 ratio of wild type flies to flies with paisley eyes. Of course, the ratio won't be exactly 4 to 1; one must allow for random error. The question is: do the results differ &ldquo;significantly&rdquo; from a 4 to 1 ratio? To put it differently, if the 4 to 1 ratio is true, what is the <em>probability</em> that you would get deviations from a 4 to 1 ratio that are as large (or larger) than the deviations which you observe in the data? Statisticians call this probability the <em>level of significance</em>.</p>
+					
+					<p class="txt">So how do calculate the level of significance? Statisticians have derived a test statistic called &ldquo;chi-squared&rdquo; that can be used compute the level of significance. The chi-squared test statistic measures the deviations of the observed values from the &ldquo;expected values&rdquo; that you would get if your hypothesis is true. The formula for calculating the test statistic is</p>
+
+						<math display='block'>
+						 <mrow>
+						  <msup>
+						   <mi>&#x03C7;</mi>
+						   <mn>2</mn>
+						  </msup>
+						  <mo>=</mo><mstyle displaystyle='true'>
+						   <munderover>
+							<mo>&#x2211;</mo>
+							<mrow>
+							 <mi>i</mi><mo>=</mo><mn>1</mn></mrow>
+							<mi>n</mi>
+						   </munderover>
+						   <mrow>
+							<mfrac>
+							 <mrow>
+							  <msup>
+							   <mrow>
+								<mfenced>
+								 <mrow>
+								  <msub>
+								   <mi>O</mi>
+								   <mi>i</mi>
+								  </msub>
+								  <mo>&#x2212;</mo><msub>
+								   <mi>E</mi>
+								   <mi>i</mi>
+								  </msub>
+								  </mrow>
+								</mfenced></mrow>
+							   <mn>2</mn>
+							  </msup>
+							  </mrow>
+							 <mrow>
+							  <msub>
+							   <mi>E</mi>
+							   <mi>i</mi>
+							  </msub>
+							  </mrow>
+							</mfrac>
+							</mrow>
+						  </mstyle></mrow>
+						</math>
+					
+					<p class="txt">where <em>O<sub>i</sub></em> represents the observed values for each group and <em>E<sub>i</sub></em> represents the expected values for each group. In this formula, you take observed number for each phenotype, subtract the expected number, square the difference, and divide the squared difference by the expected number. You sum the chi-squared terms for all the phenotypes to obtain your test statistic.</p>
+					
+					<p class="txt">So how do you get the expected numbers? The expected numbers are the values you would get if the data exactly matched your hypothesis. For example, if you are expecting a 4 to 1 ratio of wild type flies to flies with paisley eyes, then 4/5 or 80% of the flies should be wild type and 1/5 or 20% should have paisley eyes. If you multiply the total number of flies by 0.8 and 0.2, you get the expected numbers for wild type and paisley eyes, respectively. A ratio of 8:4:3:1 really means that you expect the phenotypes to be divided into proportions of 8/16, 4/16, 3/16, and 1/16 because 8+4+3+1=16. Multiplying these probabilities by the total number of flies would give you your expected values.</p>
+					
+					<p class="txt">Look closely at the formula above for the chi-squared test statistic. If your hypothesis is true, then the squared deviations between the observed and expected values will most likely be small and so will the test statistic. If your hypothesis is false, then the squared deviations between the observed and expected values will most likely be large and so will the test statistic. The larger the value of the test statistic, the smaller the probability that your hypothesis is true. In other words, large values of the test statistic lead to small values for the level of significance.</p>
+					
+					<p class="txt">The test statistic can be compared with a theoretical probability distribution to obtain the level of significance. This probability distribution depends on the "degrees of freedom" which equals number of phenotypic groups used in the calculation minus one. One degree of freedom is lost because the sum of the expected values equals the total for the observed values. Statistical tables can be used to look up the level of significance. Many software programs, such as FlyLab JS, calculate the level of significance for you. You can also obtain the level of significance using the MS Excel function CHISQ.DIST.RT(<em>X</em>,<em>v</em>), where <em>X</em> is the value of the chi-squared test statistics and <em>v</em> is the degrees of freedom.</p>
+					
+					<p class="txt">If the level of significance is small, it is not likely (low probability) that the deviations from your hypothesis are due to random error alone, therefore, your hypothesis is likely wrong. At this point you would want to work out a new ratio based on a different genetic hypothesis. On the other hand, if the level of significance is large, there is a good chance (high probability) that the deviations from your hypothesis are simply due to random error. In other words, there is no evidence to reject your hypothesis. At this point you should congratulate yourself; your hypothesis fits the data. However, you should also continue to challenge your hypothesis by designing other crosses.</p>
+
+					<p class="txt">What is a &ldquo;small&rdquo; level of significance? At what point do you reject your hypothesis? Scientists have agreed on a cut-off value of 0.05 for the level of significance. In other words, if there is a less than a 5% chance that the deviations from your hypothesis are due to random error, then you should reject your hypothesis. Your hypothesis is inconsistent with the data.</p>
+
+					<p class="txt">Let’s consider a numerical example. Assume that for a certain genetic cross you are expecting wild type flies, flies with banana wings, flies with paisley eyes, and flies with both banana wings and paisley eyes. Let’s assume that based on your hypothesis for the genetic characteristics of the mutations and the genotypes of the parents, you are expecting these four phenotypes to occur in a ratio of 8:4:3:1. You conduct the experiment and obtain the following number of flies: 551 wild type, 215 with banana wings, 197 with paisley eyes, and 66 with both banana wings and paisley eyes. You want to know if these data agree with your hypothesis. The following table shows the calculation of the chi-squared test statistic:</p>
+					
+					<table class='example'>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; min-width:80px; text-align:left;'>Phenotype</th>
+							<th scope='col' class='example' style='font-weight:bold;'>Observed Numbers</th>
+							<th scope='col' class='example' style='font-weight:bold;'>Expected Ratio</th>
+							<th scope='col' style='font-weight:bold;' class='example'>Probability</th>
+							<th scope='col' style='font-weight:bold;' class='example'>Expected Numbers</th>
+							<th scope='col' style='font-weight:bold;' class='example'>Chi-Squared Term</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example' style='font-weight:normal; min-width:150px; text-align:left;'>wild type</th>
+							<td class='example' style='font-weight:normal;'>551</td>
+							<td class='example' style='font-weight:normal;'>8</td>
+							<td class='example' style='font-weight:normal;'>0.5000</td>
+							<td class='example' style='font-weight:normal;'>514.50</td>
+							<td class='example' style='font-weight:normal;'>2.59</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example' style='font-weight:normal; min-width:150px; text-align:left;'>banana wings</th>
+							<td class='example' style='font-weight:normal;'>215</td>
+							<td class='example' style='font-weight:normal;'>4</td>
+							<td class='example' style='font-weight:normal;'>0.2500</td>
+							<td class='example' style='font-weight:normal;'>257.25</td>
+							<td class='example' style='font-weight:normal;'>6.94</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example' style='font-weight:normal; min-width:150px; text-align:left;'>paisley eyes</th>
+							<td class='example' style='font-weight:normal;'>197</td>
+							<td class='example' style='font-weight:normal;'>3</td>
+							<td class='example' style='font-weight:normal;'>0.1875</td>
+							<td class='example' style='font-weight:normal;'>192.94</td>
+							<td class='example' style='font-weight:normal;'>0.09</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example' style='font-weight:normal; min-width:150px; text-align:left;'>banana wings &amp; paisley eyes</th>
+							<td class='example' style='font-weight:normal;'>66</td>
+							<td class='example' style='font-weight:normal;'>1</td>
+							<td class='example' style='font-weight:normal;'>0.0625</td>
+							<td class='example' style='font-weight:normal;'>64.31</td>
+							<td class='example' style='font-weight:normal;'>0.04</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example' style='font-weight:bold; min-width:150px; text-align:right;'>Totals</th>
+							<td class='example' style='font-weight:bold;'>1029</td>
+							<td class='example' style='font-weight:bold;'>16</td>
+							<td class='example' style='font-weight:bold;'>1.0000</td>
+							<td class='example' style='font-weight:bold;'>1029.00</td>
+							<td class='example' style='font-weight:bold;'>9.66</td>
+						</tr>
+					</table>
+					
+					<table role='presentation' style='border-collapse:collapse; border:none; margin:auto; margin-top:12px; font-family: "Arial", sans-serif; font-size: 12pt;'>
+						<tr>
+							<td colspan='2' style='font-weight:bold ;border:none; text-align:center;'>Results for the Chi-squared Test</td>
+						</tr>
+						<tr>
+							<td style='border:none; text-align:right; padding-right:12px;'>Chi-squared test statistic:</td>
+							<td style='border:none; text-align:left'>9.66</td>
+						</tr>
+						<tr>
+							<td style='border:none; text-align:right; padding-right:12px;'>Degrees of freedom:</td>
+							<td style='border:none; text-align:left'>3</td>
+						</tr>
+						<tr>
+							<td style='border:none; text-align:right; padding-right:12px;'>Level of significance:</td>
+							<td style='border:none; text-align:left'>0.0217</td>
+						</tr>
+					</table>
+
+					<p class="txt">The chi-squared test statistic is the value in the last row and column. Since there are four phenotypic groups, the degrees of freedom are 4-1=3. If the 8:4:3:1 hypothesis is true, then the probability that you would get a chi-squared value of 9.66 or larger due to random chance alone is only 0.0217, which falls below the 0.05 level of significance. Since it is unlikely that the deviations of the observed and expected values are due to random chance alone, you should reject the hypothesis that led you to the 8:4:3:1 ratio.</p>
+					
+					<p class="txt">Try recomputing the above example using the hypothesis of a 9:3:3:1 ratio for the phenotypes. Use Excel to get the level of significance. (Answer:  chi-squared test statistic = 3.99, degrees of freedom = 3, level of significance = 0.2626, do not reject the 9:3:3:1 hypothesis.)</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!------End of Support Content --------------------------->
+
+<!------End Main Div for Applet -------------------------->
+</div>
+
+</body>
+
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/supp/intro.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:34 GMT -->
+</html>

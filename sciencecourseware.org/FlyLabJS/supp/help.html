@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/supp/help.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:34 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="description" content="FlyLab JS fruit fly genetics simulator">
+<meta name="keywords" content="genetics,Mendel,inheritance">
+<meta name="author" content="Robert Desharnais">
+<title>FlyLab JS - Help</title>
+<script src="supportDocs.js"></script>
+<link rel=stylesheet type="text/css" href="supportDocs.css">
+</head>
+<body onload="getReady();">
+<p id="messages" style="position: absolute; left: -500%;" aria-live="polite"></p>
+
+<!----- Main Div for Applet ----------------------------->
+<div class="main">
+
+	<!----- Banner ------------------------------------------>
+
+	<div role="banner">
+	   <img src="logo.png" style="position: absolute" alt="Logo image of a small fruit fly" title="Logo image of a small fruit fly">
+	   <div class="logotxt"><span class="logotxt1">Fly</span><span class="logotxt2">Lab JS</span></div>
+	</div>
+	<nav role="navigation" class="menu" id="main"><a href="intro.html">Introduction</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../index-2.html"><em>Fly</em>Lab JS</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="abbr.html">Abbreviations</a>&nbsp;&nbsp;|&nbsp;&nbsp;<span aria-selected="true"><strong>Help</strong></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="instructor.html">Instructors</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rdeshar@calstatela.edu">Contact</a></nav>
+	<div role="complementary" class="copyright">Copyright &copy; 2019, 2022, Robert A. Desharnais, Ph.D.<br>
+	Virtual Courseware Project, ScienceCourseware.org</div>
+
+	<!------ End of Banner ----------------------------------->
+	
+	<!----- Expand/Collapse Buttons -------------------------->
+
+	<div class="ecBtnDiv">
+		<button type="button" class="ecBtn" id="expandBtn" aria-label="expand all sections" onclick="expandAll()"><u>E</u>xpand All Sections</button>&nbsp;&nbsp;
+		<button type="button" class="ecBtn" id="collapseBtn" aria-label="collapse all sections" onclick="collapseAll()"><u>C</u>ollapse All Sections</button>
+	</div>
+
+	<!------ End of Expand/Collapse Buttons ------------------>
+
+	<!----- Support Content ---------------------------------->
+	<div class="supportContent">
+
+		<h1>Help for <em>Fly</em>Lab JS</h1>
+		
+		<ul class="accordian" aria-label="Accordion Control Group Buttons">
+			
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Layout " aria-controls="content-1" aria-expanded="false" id="accordion-control-1"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Layout Overview</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-1">
+					<p class="txt">The <em>Fly</em>Lab JS application has two main regions: (1) a header area at the top of the document and (2) a work area (Fig. 1). The header area contains the main menu and view tabs, as well as an application logo and copyright information. The work area is where most or your activities are conducted. The main menu links and different work area views are explained in the sections below.</p>
+
+					<figure>
+						<img src="overview.png" width="664" class="inText" alt="Overview of the FlyLab JS layout" title="Overview of the FlyLab JS layout">
+						<figcaption><strong>Figure 1.</strong>&nbsp;&nbsp;Overview of the <em>Fly</em>Lab JS layout</figcaption>
+					</figure>
+
+				</div>
+			</li>
+				
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Main Menu" aria-controls="content-2" aria-expanded="false" id="accordion-control-2"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Main Menu</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-2">
+					<p class="txt">The main menu has the following links:
+						<ul>
+							<li><em>Introduction.</em> This link opens a supporting document that describes the learning objectives and prerequisites for <em>Fly</em>Lab JS, the assumptions underlying the <em>Fly</em>Lab JS genetics, and an explanation of the chi-squared statistical analysis provided by the application.</li>
+							<li><em>FlyLab JS.</em> This link opens the main application where one can design and mate flies, and view and analyze the results of genetic crosses. If you close or reload this page, the application will reset, and you will lose any work you have not exported from the lab notes.</li>
+							<li><em>Abbreviations.</em> This link opens a document that lists the abbreviations for the genetic mutations in <em>Fly</em>Lab JS. The abbreviation scheme differs from what <em>Drosophila</em> geneticists use.</li>
+							<li><em>Help.</em> This link opens the help page you are currently reading.</li>
+							<li><em>Instructors.</em> This link leads to information and suggestions created for instructors. Access to this information requires a username and password which can be obtained by email using the contact information provided. Usernames and passwords will only be provided to instructors.</li>
+							<li><em>Contact.</em> This link allows you to send an email to the creator of <em>Fly</em>Lab JS.</li>
+						</ul>
+					</p>
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Views" aria-controls="content-3" aria-expanded="false" id="accordion-control-3"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Views</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-3">
+					<p class="txt">The view tabs allow you to access the different views of <em>Fly</em>Lab JS. Each view supports a different function of <em>Fly</em>Lab JS. You can switch views at any time using the view tabs. What follows is a brief description of the purpose of each view. Details on each of these views is described in the sections below.
+						<ul>
+							<li><em>Design View</em> is where you design flies for your experiments. You can select from a variety of genetic mutations. The designed fly can be copied into the Mate View to conduct a genetic cross.</li>
+							<li><em>Mate View</em> is where you cross and a male and female fly. There are two possible sources for flies to be mated: (1) they can be created in the Design View, or (2) you can select a parent or offspring fly from a previous cross in the Crosses View. Once two flies are mated a new entry with the results of the cross appears in both the Crosses View and the Analyze View.</li>
+							<li><em>Crosses View</em> shows a graphical representation of a genetic cross. The phenotypes of the parents and offspring are displayed. Any of the flies in the Crosses View can be selected for mating. If you have conducted more than one cross, you can access any of them using the Select Cross button.</li>
+							<li><em>Analyze View</em> presents a table of results from a genetic cross and allows you to test a hypothesis for the ratios among the offspring phenotypes. If you have conducted more than one cross, you can access any of them using the Select Cross button.</li>
+							<li><em>Lab Notes View</em> serves as a &ldquo;laboratory notebook&rdquo; where you can keep images of flies from the Magnify View and tabular results from the Analyze View. You can also add your own comments. The lab notes can be exported to a regular web page for printing, copy/pasting, or saving to your computer.</li>
+						</ul>
+					</p>
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Design View" aria-controls="content-4" aria-expanded="false" id="accordion-control-4"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Design View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-4">
+					<p class="txt">The Design View can be accessed using the Design tab. Users can select from a variety of possible mutations. Mutations are organized into mutation groups and a single mutation can be selected from each group. Each group (except sex) has wild type as an option. Once the user has selected the mutations they want to use, the designed fly can be selected for mating.</p>
+
+					<figure>
+						<img src="design.png" width="693" class="inText" alt="Screen image of the Design View" title="Screen image of the Design View">
+						<figcaption><strong>Figure 2.</strong>&nbsp;&nbsp;Layout of the Design View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">The buttons of the left side of the view are used to switch among mutation groups (Fig. 2). If a mutation other than wild type is selected, a check box appears on the right side of the button. For the <strong>Sex</strong> button, a male or female symbol indicates the chosen sex for the designed fly. The button for the currently chosen mutation group will have a boldface label and white background color.</p>
+
+					<p class="txt">The <strong>Reset All</strong> button can be used to reset all the mutations to wild type (Fig. 2). The selected mutation group is changed to Sex but the chosen option for sex is not changed.</p>
+
+					<p class="txt">The possible options for each mutation group are displayed in the box at the top middle portion of the view (Fig. 2). A graphical representation of each mutation option is displayed. The radio buttons below each option can be used to select a mutation. Wild type is default option. Placing the mouse cursor over the image will provide a description of the mutation.</p>
+
+					<p class="txt">The large fly image in the bottom portion of the screen shows the appearance of designed fly with the mutations that have been currently selected (Fig. 2). Placing the mouse cursor over the image will provide a textual description of the phenotype. To the right of the fly image is a list of the selected traits for each mutation group (Fig. 2). These are updated whenever a new mutation or female/male sex option is selected.</p>
+
+					<p class="txt">The small square button at the bottom of the view with a magnifier icon (Fig. 2) can be used to pop up a magnified image of the designed fly. This image can be copied to the lab notes.</p>
+
+					<p class="txt">Clicking the <strong>Select Fly for Mating</strong> button in the lower right corner of the view (Fig. 2) will move the designed fly into the Mate View which will become the active view. If a fly of the same sex is already in place in the Mate View, an alert panel will give the user the option of replacing the fly in the Mate View with the designed fly or cancelling the selection. Selecting a designed fly for mating resets all the mutations in the Design View to wild type.</p>
+
+					<p class="txt">If one fly (female or male) has already been selected for mating and it carries one or more mutations, the options for a mutation group will be limited to wild type and the mutation of the previously selected fly. For example, if a female fly with curly wings has already been selected for mating, the wing shape options for the male fly in the Design View are limited to wild type and curly wings.</p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Magnify View" aria-controls="content-5" aria-expanded="false" id="accordion-control-5"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Magnify View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-5">
+					<p class="txt">The Magnify View (Fig. 3) can be used to examine more closely any of the flies in the Design View, Mate View, or Crosses View. The Magnify View is obtained using the small square button with a magnifier icon located near the image of the fly.</p>
+
+					<figure> 
+						<img src="magnify.png" width="658" class="inText" alt="Screen image of the Magnify View" title="Screen image of the Magnify View">
+						<figcaption><strong>Figure 3.</strong>&nbsp;&nbsp;Layout of the Magnify View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">The Magnify View is a modal view&mdash;no other actions can be taken in <em>Fly</em>Lab JS while the view is open. The small <strong>Close Button (x)</strong> in the upper right can be used to dismiss the Magnify View (Fig. 3).</p>
+
+					<p class="txt">The Magnify View can be used to create a copy of the fly image in the Lab Notes View. This is accomplished using the <strong>Add Fly Image to Lab Notes</strong> button at the bottom of the view (Fig. 3). This button will dismiss the Magnify View and change the active view to the Lab Notes.</p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Mate View" aria-controls="content-6" aria-expanded="false" id="accordion-control-6"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Mate View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-6">
+					<p class="txt">The Mate View can be accessed using the Mate tab. The purpose of this view is to mate a female and male fly to produce a genetic cross. The source of either of the two flies in the Mate View can be the Design View, where the fly is created from options of possible mutations, or the Crosses View, where the fly is an offspring or parent from a previous mating.</p>
+
+					<figure> 
+						<img src="mate.png" width="643" class="inText" alt="Screen image of the Mate View" title="Screen image of the Mate View">
+						<figcaption><strong>Figure 4.</strong>&nbsp;&nbsp;Layout of the Mate View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">In the Mate View, the female parent appears on the left and the male parent on the right (Fig. 4). If no fly has been selected, a greyed-out fly image will be displayed.</p>
+
+					<p class="txt">A small square button with a magnifier icon (Fig. 4) will appear below the female or male, if one has been selected. This button can be used to pop up a magnified image of the fly. This image can be copied to the lab notes.</p>
+
+					<p class="txt">If no fly has been selected, a <strong>Design Fly</strong> button will appear below the greyed-out fly image. Clicking this button will take you to the Design View. If a fly has been selected for mating, a <strong>Remove Fly</strong> button appears below the fly image (Fig. 4). Clicking this button will remove the fly from the Mate View.</p>
+
+					<p class="txt">If both a female and male fly have been selected, the <strong>Mate Flies</strong> button will be enabled (Fig. 4). Clicking this button will produce a genetic cross between the two flies. The current view will change to the Crosses View where the parents and offspring appear. The numerical data for the cross will also appear in tabular form in the Analyze View.</p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Crosses View" aria-controls="content-7" aria-expanded="false" id="accordion-control-7"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Crosses View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-7">
+					<p class="txt">The Crosses View can be accessed using the Crosses tab. The purpose of this view is to examine graphically the phenotypes resulting from a genetic cross.</p>
+
+					<figure> 
+						<img src="crosses.png" width="599" class="inText" alt="Screen image of the Crosses View" title="Screen image of the Crosses View">
+						<figcaption><strong>Figure 5.</strong>&nbsp;&nbsp;Layout of the Crosses View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">The <strong>Select Cross</strong> drop-down menu can be used to access any of the crosses made during the current <em>Fly</em>Lab JS session (Fig. 5). Clicking on the button expands the menu to show all the available crosses. Clicking an entry will change the work area to display the selected cross.</p>
+
+					<p class="txt">The parents of the selected cross are shown at the top of the Crosses View and the offspring phenotypes are shown below the parents (Fig. 5). If there are more than four types of offspring, the scroll bar on the right of the view becomes active and one can scroll through the remaining entries. The sex, phenotype, and number of flies represented by the image are listed above each fly image. One can place the mouse cursor above the genetic abbreviation or fly image to see an expanded description of the phenotype.</p>
+
+					<p class="txt">A small square button with a magnifier icon (Fig. 5) appears below each fly image. This button can be used to pop up a magnified view of the fly. This image can be copied to the lab notes.</p>
+
+					<p class="txt">One can use any parent or offspring fly for another mating by clicking the <strong>Select to Mate</strong> button (Fig. 5). If no flies currently exist in the Mating View, a green checkmark will be superimposed onto the selected fly, and the Crosses View will remain active. If one fly of the opposite sex has already been selected for mating, the Mate View which will become the active view.</p>
+
+					<p class="txt">Selecting a fly for mating from an offspring phenotype will select only a <em>single fly</em>. If that fly image represents a mixture of genotypes with the same phenotype, then the genotype of the selected fly is determined at random based on the expected proportions among the genotypes in the phenotype group. For example, if the fly image being displayed represents a group of flies with a wild type phenotype, but 1/3 of those flies are expected to be homozygous dominant for wild type, and 2/3 are expected to be heterozygous for a recessive trait, then the fly selected for mating will be either homozygous or heterozygous with probabilities of 1/3 and 2/3, respectively. </p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Analyze View" aria-controls="content-8" aria-expanded="false" id="accordion-control-8"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Analyze View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-8">
+					<p class="txt">The Analyze View can be accessed using the Analyze tab. The purpose of this view is to examine and test hypotheses for the phenotype data resulting from a genetic cross.</p>
+
+					<figure> 
+						<img src="analyze.png" width="708" class="inText" alt="Screen image of the Analyze View" title="Screen image of the Analyze View">
+						<figcaption><strong>Figure 6.</strong>&nbsp;&nbsp;Layout of the Analyze View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">The <strong>Select Cross</strong> drop-down menu can be used to access tabular data for any of the crosses made during the current <em>Fly</em>Lab JS session (Fig. 6). Clicking on the button expands the menu to show all the available crosses. Clicking an entry will change the work area to display the selected cross.</p>
+
+					<p class="txt">The work area of the Analyze View shows the results of the selected cross in a tabular format. The default table has three columns: (1) the phenotype using the genetic abbreviations, (2) the observed number of flies for each phenotype, and the proportion of flies for each phenotype. The proportions are obtained by taking the observed number and dividing by the total number of offspring.</p>
+
+					<p class="txt">In many cases you may want to simplify the data by combining the numbers of females and males with the same phenotypes. Clicking the check box option <strong>Ignore Sex of Flies</strong> (Fig. 6) will reorganize the table by combining rows where flies have the same phenotype regardless of their sex. This option can be selected independently for tables that exclude or include a test of hypothesis.</p>
+
+					<p class="txt"><em>Fly</em>Lab JS allows users to test hypotheses they may have regarding the phenotypic ratios among the offspring. Clicking the check box option <strong>Include a Test of Hypothesis</strong> (Fig. 6) will add four columns to the table: (1) hypothesis, (2) probability, (3) expected, and (4) the chi-squared term. This option can be selected independently for tables that include or ignore the sex of the flies. It also adds a button labeled <strong>Test Your Hypothesis</strong> below the table that can be used to test the hypothesis and the results of the chi-squared test. The hypothesis column will hold text fields where the user can enter the values for their hypothesis. These are positive numbers that represent the hypothesis of relative abundances for each phenotype. Each number will be divided by the total of the entered values to get probabilities which appear in the fifth column. These probabilities are multiplied by the observed total number of offspring to obtain expected values for the number of offspring, displayed in the sixth column, that would occur if the entered hypothesis was true. The observed (O) and expected (E) numbers are used to compute the chi-squared term, (O–E)<sup>2</sup>/E for each phenotype. The sum of these chi-squared terms is the test statistic for the hypothesis. After a hypothesis has been tested, the button below the table will change to <strong>New Hypothesis</strong>. Clicking this button will allow another hypothesis to be entered and tested. If a hypothesis has been tested, the results of the test appear below the table. The results include the chi-squared test statistic, the degrees of freedom for the test statistic, and the level of significance. If the level of significance is below 0.05, the hypothesis should be rejected. See the last section of the <a href="intro.html" target="_blank">Introduction</a> for more information on the chi-squared test.</p>
+
+					<p class="txt">The results displayed in the Analyze View can be copied to the Lab Notes View. This is accomplished using the <strong>Add Results to Lab Notes</strong> button at the bottom of the view. This button will change the active view to the Lab Notes, scrolled to the beginning of the newly copied results.</p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Lab Notes View" aria-controls="content-9" aria-expanded="false" id="accordion-control-9"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Lab Notes View</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-9">
+					<p class="txt">The Lab Notes View can be accessed using the Lab Notes tab. The purpose of this view is to serve as a &ldquo;laboratory notebook&rdquo; where you can keep images of flies from the Magnify View and tabular results from the Analyze View and export them to a web page.</p>
+
+					<p class="txt"><em>Fly</em>Lab JS is a javascript applet that does not store any information produced by the user’s experiments. This means that once you navigate away from the web page, reload the applet, or close the browser window, all crosses and data analyses will be lost. Information you which to keep can be copied to the Lab Notes View and exported to a web page that can be bookmarked, saved, copied, or printed for later use.</p>
+
+					<figure> 
+						<img src="labnotes.png" width="715" class="inText" alt="Screen image of the Lab Notes View" title="Screen image of the Lab Notes View">
+						<figcaption><strong>Figure 7.</strong>&nbsp;&nbsp;Layout of the Lab Notes View in <em>Fly</em>Lab JS.</figcaption>
+					</figure>
+
+					<p class="txt">The Lab Notes View is organized into sections (Fig. 7) which are separated by horizontal lines. Each section represents an item that was copied from an experiment. There are two types of sections: (1) a fly image section, or (2) a results section. Both types of sections have text areas where the user can type comments. A section can be removed by clicking on the small close button (X) that appears in the upper right corner. A panel will appear asking the user to confirm the deletion. There is no &ldquo;undo&rdquo; for the removal of a section, although the information can be re-copied into the Lab Notes from the Magnify or Analyze Views.</p>
+
+					<p class="txt">In the top left corner of the Lab Notes View is a button labelled <strong>Export as Web Page</strong>. Clicking on this button will open a new browser tab with a standard web page that contains a copy of all the items in the Lab Notes. You should note the URL of this page if you want to return to it later. The exported web page will remain available for a minimum of two weeks before being deleted from the server.</p>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Keyboard Shortcuts" aria-controls="content-10" aria-expanded="false" id="accordion-control-10"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Keyboard Shortcuts</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-10">
+					<p class="txt"><em>Fly</em>Lab JS has many keyboard shortcuts for both convenience and accessibility. It is possible to use FlyLab JS without the aid of a pointing device.</p>
+
+					<p class="txt">Most labelled buttons in <em>Fly</em>Lab JS have a keyboard alternative which is indicated using an underlined character as part of the label. The Crosses View is an exception because there could be dozens of flies represented, each with its own Select to Mate button. Keyboard alternatives are available as specified in the tables below. The Tab and Alt-Tab keys can be used to cycle through the controls and other elements in the browser window.</p>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">All Views:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Tabs for views</th>
+							<td class='example'>right, left arrow (&rarr;, &larr;)</td>
+							<td class='example'>Cycles through the view tabs.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Design tab</th>
+							<td class='example'>d, D</td>
+							<td class='example'>Selects the Design View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Mate tab</th>
+							<td class='example'>m, M</td>
+							<td class='example'>Selects the Mate View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Crosses tab</th>
+							<td class='example'>c, C</td>
+							<td class='example'>Selects the Crosses View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Analyze tab</th>
+							<td class='example'>a, A</td>
+							<td class='example'>Selects the Analyze View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Lab Notes tab</th>
+							<td class='example'>l, L</td>
+							<td class='example'>Selects the Lab Notes View.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Design View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Sex button</th>
+							<td class='example'>x, X</td>
+							<td class='example'>Selects the sex options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Antennae button</th>
+							<td class='example'>t, T</td>
+							<td class='example'>Selects the antennae options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Eye Color button</th>
+							<td class='example'>e, E</td>
+							<td class='example'>Selects the eye color options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Eye Shape button</th>
+							<td class='example'>h, H</td>
+							<td class='example'>Selects the eye shape options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Wing Size button</th>
+							<td class='example'>z, Z</td>
+							<td class='example'>Selects the wing size options</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Wing Shape button</th>
+							<td class='example'>w, W</td>
+							<td class='example'>Selects the wing shape options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Wing Veins button</th>
+							<td class='example'>v, V</td>
+							<td class='example'>Selects the wing vein options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Wing Angle button</th>
+							<td class='example'>n, N</td>
+							<td class='example'>Selects the wing angle options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Body Color button</th>
+							<td class='example'>o, O</td>
+							<td class='example'>Selects the body color options.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Reset All button</th>
+							<td class='example'>r, R</td>
+							<td class='example'>Resets all traits to wild type.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Magnify button</th>
+							<td class='example'>g, G</td>
+							<td class='example'>Magnifies the designed fly.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Select Fly for Mating button</th>
+							<td class='example'>s, S</td>
+							<td class='example'>Selects designed fly for Mate View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Select mutation</th>
+							<td class='example'>0–5</td>
+							<td class='example'>Selects trait from the mutation group.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Next/previous mutation</th>
+							<td class='example'>right, left, up, down,<br>arrows (&rarr;, &larr;, &uarr;, &darr;)</td>
+							<td class='example'>If focus is on the radio button group,<br>cycles through available mutations.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Mate View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Design Fly button (female)</th>
+							<td class='example'>e, E</td>
+							<td class='example'>Opens Design View with female sex option.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Design Fly button (male)</th>
+							<td class='example'>s, S</td>
+							<td class='example'>Opens Design View with male sex option.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Remove Fly button (female)</th>
+							<td class='example'>r, R</td>
+							<td class='example'>Removes female fly from Mate View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Remove Fly button (male)</th>
+							<td class='example'>v, V</td>
+							<td class='example'>Removes male fly from Mate View.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Mate Flies button</th>
+							<td class='example'>f, F</td>
+							<td class='example'>Mates flies in Mate View and shows cross.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Crosses View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Select Cross button</th>
+							<td class='example'>s, S</td>
+							<td class='example'>Expands/collapses the crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Next/previous cross</th>
+							<td class='example'>up, down arrows (&uarr;, &darr;)</td>
+							<td class='example'>Cycles through options in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>First cross</th>
+							<td class='example'>Home key</td>
+							<td class='example'>Goes to first item in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Last cross</th>
+							<td class='example'>End key</td>
+							<td class='example'>Goes to last item in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Collapse crosses list</th>
+							<td class='example'>Esc key</td>
+							<td class='example'>Collapses the crosses list.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Analyze View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Select Cross button</th>
+							<td class='example'>s, S</td>
+							<td class='example'>Expands/collapses the crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Next/previous cross</th>
+							<td class='example'>up, down arrows (&uarr;, &darr;)</td>
+							<td class='example'>Cycles through options in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>First cross</th>
+							<td class='example'>Home key</td>
+							<td class='example'>Goes to first item in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Last cross</th>
+							<td class='example'>End key</td>
+							<td class='example'>Goes to last item in crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Collapse crosses list</th>
+							<td class='example'>Esc key</td>
+							<td class='example'>Collapses the crosses list.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Ignore sex check box</th>
+							<td class='example'>x, X</td>
+							<td class='example'>Ignores/includes sex of flies.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Include hypothesis check box</th>
+							<td class='example'>h, H</td>
+							<td class='example'>Includes/excludes hypothesis test.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Next/previous hypothesis field</th>
+							<td class='example'>up, down arrows (&uarr;, &darr;)</td>
+							<td class='example'>Cycles through hypothesis text fields.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Test hypothesis button</th>
+							<td class='example'>t, T</td>
+							<td class='example'>Tests the entered hypothesis.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>New hypothesis button</th>
+							<td class='example'>n, N</td>
+							<td class='example'>Allows a new hypothesis to be tested.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Add results to notes button</th>
+							<td class='example'>n, N</td>
+							<td class='example'>Adds table of results to lab notes.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Lab Notes View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Export button</th>
+							<td class='example'>e, E</td>
+							<td class='example'>Exports the lab notes to a web page.</td>
+						</tr>
+					</table>
+
+					<table class='example' style="text-align:left; margin-left:0px; width:100%">
+						<caption class="keyalts">Magnify View:</caption>
+						<tr class='example'>
+							<th scope='col' class='example' style='font-weight:bold; width:30%;'>Control Element</th>
+							<th scope='col' class='example' style='font-weight:bold; width:25%;'>Shortcut</th>
+							<th scope='col' class='example' style='font-weight:bold; width:45%;'>Effect</th>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Close button</th>
+							<td class='example'>x, X</td>
+							<td class='example'>Closes the modal magnify fly view.</td>
+						</tr>
+						<tr class='example'>
+							<th scope='row' class='example'>Add Fly to Lab Notes button</th>
+							<td class='example'>i, I</td>
+							<td class='example'>Adds fly image to lab notes</td>
+						</tr>
+					</table>
+
+				</div>
+			</li>
+
+			<li class="accordian">
+				<button class="secTitle" aria-label="section for Screen Reader Enhancements " aria-controls="content-11" aria-expanded="false" id="accordion-control-11"><table role="presentation"><tr><td><span aria-hidden="true" class="symb">&plus;</span>&nbsp;</td><td>Screen Reader Enhancements</td></tr></table></button>
+				<div class="secTxt" aria-hidden="true" id="content-11">
+					<p class="txt"><em>Fly</em>Lab JS has been enhanced to improve usability with screen readers. Verbal explanations have been included for most actions taken by the user. All screen items, including titles, images, labels, table cells, etc., are accessible using the Tab and Alt-Tab keys. Helpful verbal descriptions have been added to many onscreen objects.</p>
+				</div>
+			</li>
+
+		</ul>
+	</div>
+	<!------End of Support Content --------------------------->
+
+<!------End Main Div for Applet -------------------------->
+</div>
+
+</body>
+
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/supp/help.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:36 GMT -->
+</html>

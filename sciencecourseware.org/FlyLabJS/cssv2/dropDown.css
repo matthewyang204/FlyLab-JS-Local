@@ -1,0 +1,74 @@
+.dropdown {
+  position: absolute;
+  display: inline-block;
+  margin-top: 15px;
+  left: 6px;
+  color: black;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  z-index: 1;
+  vertical-align: top;
+  line-height: 0%;  
+}
+
+.dropbtn {
+  position: relative;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 6px 6px 0px 0px;
+  height: 38px;
+  width: 162px;
+  color: black;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #dcffcc;
+}
+
+.crossesbtn {
+  display: block;
+  position: relative;
+  border: 1px solid #41719c;
+  border-top: none;
+  background-color: #dae3f3;
+  height: 38px;
+  width: 162px;
+  color: black;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  cursor: pointer;
+}
+
+.crossesbtn:hover, .crossesbtn:focus {
+  background-color: #dcffcc;
+}
+
+.crossesbtn.active {
+  background-color: #ffffff;
+  font-weight: bold;
+  cursor: default;
+}
+
+.crossesbtn.active:hover,
+.crossesbtn.active:focus {
+  background-color: #ffffff;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  margin-top: 0px;
+  background-color: #dae3f3;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 162px;
+  max-height: 480px;
+}
+
+

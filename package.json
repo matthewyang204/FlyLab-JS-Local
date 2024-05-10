@@ -1,0 +1,15 @@
+{
+  "name": "flylab-js",
+  "version": "1.0.0",
+  "description": "Local version of FlyLab JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "."
+  },
+  "author": "Copyright © 2019, 2022, Robert A. Desharnais, Ph.D.",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^30.0.3",
+    "electron-packager": "^17.1.2"
+  }
+}

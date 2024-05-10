@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:36 GMT -->
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="description" content="FlyLab JS fruit fly genetics simulator">
+<meta name="keywords" content="genetics,Mendel,inheritance">
+<meta name="author" content="Robert Desharnais">
+<title>FlyLab JS</title>
+<script src="jsv2/flyPaths.js"></script>
+<script src="jsv2/drawFlyFncs.js"></script>
+<script src="jsv2/Gene.js"></script> 
+<script src="jsv2/Chromosome.js"></script> 
+<script src="jsv2/Gamete.js"></script> 
+<script src="jsv2/Genotype.js"></script> 
+<script src="jsv2/Phenotype.js"></script> 
+<script src="jsv2/Mendel.js"></script> 
+<script src="jsv2/Controller.js"></script> 
+<script src="jsv2/DesignView.js"></script> 
+<script src="jsv2/MateView.js"></script> 
+<script src="jsv2/CrossesView.js"></script> 
+<script src="jsv2/AnalyzeView.js"></script> 
+<script src="jsv2/LabNotesView.js"></script> 
+<link rel=stylesheet type="text/css" href="cssv2/flylabjs.css">
+<link rel=stylesheet type="text/css" href="cssv2/dropDown.css">
+<script>
+var cntrl, dv, mv, cv, av, lv;
+function getReady() {
+   cntrl = new Controller();  // coordinates UI interactions
+   dv = new DesignView();
+   mv = new MateView();
+   cv = new CrossesView();
+   av = new AnalyzeView();
+   lv = new LabNotesView();
+
+   // set up functions
+   var viewObjs = [dv, mv, cv, av, lv];
+   dv.setup(cntrl, viewObjs);
+   mv.setup(cntrl, viewObjs);
+   cv.setup(cntrl, viewObjs);
+   av.setup(cntrl, viewObjs);
+   lv.setup(cntrl, viewObjs);
+   cntrl.setup(viewObjs);
+   cntrl.keybShortCuts(cntrl);
+}
+// when page unloads
+window.addEventListener("beforeunload", function(e) {
+  e.returnValue = "All your work will be lost!";
+});
+</script>
+</head>
+<body onload="getReady();">
+<p id="messages" style="position: absolute; left: -500%;" aria-live="polite"></p>
+<p id="messages2" style="position: absolute; left: -600%;" aria-live="polite"></p>
+
+<!----- Main Div for Applet ----------------------------->
+<div class="main">
+
+<!----- Banner ------------------ ------------------------>
+
+<div role="banner">
+   <img src="img/logo.png" style="position: absolute" alt="Logo image of a small fruit fly" title="Logo image of a small fruit fly">
+   <div class="logotxt"><span class="logotxt1">Fly</span><span class="logotxt2">Lab JS</span></div>
+</div>
+<nav role="navigation" class="menu" id="main"><a href="supp/intro.html" target="_blank">Introduction</a>&nbsp;&nbsp;|&nbsp;&nbsp;<span aria-selected="true"><strong>FlyLab JS</strong></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="supp/abbr.html" target="_blank">Abbreviations</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="supp/help.html" target="_blank">Help</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="supp/instructor.html" target="_blank">Instructors</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:rdeshar@calstatela.edu">Contact</a></nav>
+<div role="complementary" class="copyright">Copyright &copy; 2019, 2022, Robert A. Desharnais, Ph.D.<br>
+Virtual Courseware Project, ScienceCourseware.org</div>
+
+<!------ End of Banner ----------------------------------->
+
+
+<!----- Tabs --------------------------------------------->
+<div role="tablist">
+   <div role="tab" aria-setsize="5" aria-posinset="1" aria-selected="true" aria-controls="designUI" class="tab active" id="designTab" style="left: -1px;" tabindex="0" onclick="cntrl.changeView(0)" onkeydown="if (!(event.shiftKey || event.keyCode==9 || (event.keyCode==9 && event.shiftKey))) {cntrl.changeView(0);}">Design</div>
+   <div role="tab" aria-setsize="5" aria-posinset="2" aria-selected="false" aria-controls="mateUI" class="tab" id="mateTab" style="left: 115px;" tabindex="0" onclick="cntrl.changeView(1)" onkeydown="if (!(event.shiftKey || event.keyCode==9 || (event.keyCode==9 && event.shiftKey))) {cntrl.changeView(1);}">Mate</div>
+   <div role="tab" aria-setsize="5" aria-posinset="3" aria-selected="false" aria-controls="crossesUI" class="tab" id="crossesTab" style="left: 231px;" tabindex="0" onclick="cntrl.changeView(2)" onkeydown="if (!(event.shiftKey || event.keyCode==9 || (event.keyCode==9 && event.shiftKey))) {cntrl.changeView(2);}">Crosses</div>
+   <div role="tab" aria-setsize="5" aria-posinset="4" aria-selected="false" aria-controls="analyzeUI" class="tab" id="analyzeTab" style="left: 347px;" tabindex="0" onclick="cntrl.changeView(3)" onkeydown="if (!(event.shiftKey || event.keyCode==9 || (event.keyCode==9 && event.shiftKey))) {cntrl.changeView(3);}">Analyze</div>
+   <div role="tab" aria-setsize="5" aria-posinset="5" aria-selected="false" aria-controls="notesUI" class="tab" id="notesTab" style="left: 463px;" tabindex="0" onclick="cntrl.changeView(4)" onkeydown="if (!(event.shiftKey || event.keyCode==9 || (event.keyCode==9 && event.shiftKey))) {cntrl.changeView(4);}">Lab Notes</div>
+</div>
+<!----- End of Tabs -------------------------------------->
+
+
+<!----- Content: Design ---------------------------------->
+<div role="tabpanel" class="tabcontent" id="designUI">
+
+   <!-- trait selections -->
+
+   <!-- sex options -->
+   <button type="button" class="traitsBtn" id="sexBtn" aria-setsize="10" aria-posinset="1" aria-controls="sex" style="margin-top: 12px;" aria-label="options for sex of fly" onclick="dv.changeGroup(0)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Sex</td><td style="text-align:right;">&#9792;</td></tr></table></button>
+   <div class="trtImg" id="sex" style="display:block;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/sex/female.png" alt="female fly" title="female fly"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/sex/male.png" alt="male fly" title="male fly"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="sex" value="0" aria-selected="true" aria-label="fly sex changed to female" checked="true" aria-setsize="2" aria-posinset="1" onclick="dv.flyMut(dv.dFly,0,0,true)"> female (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="sex" value="1" aria-selected="false" aria-label="fly sex changed to male" aria-setsize="2" aria-posinset="2" onclick="dv.flyMut(dv.dFly,0,1,true)"> male (<u>1</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- bristle options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="2" aria-controls="bristles" style="margin-top: 62px;" aria-label="options for bristles" onclick="dv.changeGroup(1)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Bristles</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="bristles" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br0.png" alt="fly thorax with wild type bristles" title="fly thorax with wild type bristles"></td>
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br1.png" alt="fly thorax with forked bristles" title="fly thorax with forked bristles"></td>
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br2.png" alt="fly thorax with shaven bristles" title="fly thorax with shaven bristles"></td>
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br3.png" alt="fly thorax with singed bristles" title="fly thorax with singed bristles"></td>
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br4.png" alt="fly thorax with spineless bristles" title="fly thorax with spineless bristles"></td>
+            <td style="border: none; width:124px; padding: 0px;"><img src="img/bristles/br5.png" alt="fly thorax with stubble bristles" title="fly thorax with stubble bristles"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="0" aria-selected="true" aria-label="thorax bristles changed to wild type" checked="true" aria-setsize="6" aria-posinset="1" onclick="dv.flyMut(dv.dFly,1,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="1" aria-selected="false" aria-label="thorax bristles changed to forked" aria-setsize="6" aria-posinset="2" onclick="dv.flyMut(dv.dFly,1,1,true)"> forked (<u>1</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="2" aria-selected="false" aria-label="thorax bristles changed to shaven" aria-setsize="6" aria-posinset="3" onclick="dv.flyMut(dv.dFly,1,2,true)"> shaven (<u>2</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="3" aria-selected="false" aria-label="thorax bristles changed to singed" aria-setsize="6" aria-posinset="4" onclick="dv.flyMut(dv.dFly,1,3,true)"> singed (<u>3</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="4" aria-selected="false" aria-label="thorax bristles changed to spineless" aria-setsize="6" aria-posinset="5" onclick="dv.flyMut(dv.dFly,1,4,true)"> spineless (<u>4</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="bristle" value="5" aria-selected="false" aria-label="thorax bristles changed to stubble" aria-setsize="6" aria-posinset="6" onclick="dv.flyMut(dv.dFly,1,5,true)"> stubble (<u>5</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- antennae options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="3" aria-controls="antennae" style="margin-top: 112px;" aria-label="options for antennae" onclick="dv.changeGroup(2)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Antennae</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="antennae" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/ant/ant0.png" alt="fly with wild type antennae" title="fly with wild type antennae"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/ant/ant1.png" alt="fly with aristapedia antennae" title="fly with aristapedia antennae"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="ant" value="0" aria-selected="true" aria-label="antennae changed to wild type" checked="true" aria-setsize="2" aria-posinset="1" onclick="dv.flyMut(dv.dFly,2,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="ant" value="1" aria-selected="false" aria-label="antennae changed to aristapedia" aria-setsize="2" aria-posinset="2" onclick="dv.flyMut(dv.dFly,2,1,true)"> aristapedia (<u>1</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- eye color options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="4" aria-controls="ecolors" style="margin-top: 162px;" aria-label="options for eye color" onclick="dv.changeGroup(3)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Eye Color</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="ecolors" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/ecolor/ec0.png" alt="fly head with wild type eye color" title="fly head with wild type eye color"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/ecolor/ec1.png" alt="fly head with brown eye color" title="fly head with brown eye color"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/ecolor/ec2.png" alt="fly head with purple eye color" title="fly head with purple eye color"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/ecolor/ec3.png" alt="fly head with sepia eye color" title="fly head with sepia eye color"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/ecolor/ec4.png" alt="fly head with white eye color" title="fly head with white eye color"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="ecolor" value="0" aria-selected="true" aria-label="eye color changed to wild type" checked="true" aria-setsize="5" aria-posinset="1" onclick="dv.flyMut(dv.dFly,3,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="ecolor" value="1" aria-selected="false" aria-label="eye color changed to brown" aria-setsize="5" aria-posinset="2" onclick="dv.flyMut(dv.dFly,3,1,true)"> brown (<u>1</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="ecolor" value="2" aria-selected="false" aria-label="eye color changed to purple" aria-setsize="5" aria-posinset="3" onclick="dv.flyMut(dv.dFly,3,2,true)"> purple (<u>2</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="ecolor" value="3" aria-selected="false" aria-label="eye color changed to sepia" aria-setsize="5" aria-posinset="4" onclick="dv.flyMut(dv.dFly,3,3,true)"> sepia (<u>3</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="ecolor" value="4" aria-selected="false" aria-label="eye color changed to white" aria-setsize="5" aria-posinset="5" onclick="dv.flyMut(dv.dFly,3,4,true)"> white (<u>4</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- eye shape options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="5" aria-controls="eshapes" style="margin-top: 212px;" aria-label="options for eye shape" onclick="dv.changeGroup(4)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Eye Shape</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="eshapes" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/eshape/es0.png" alt="fly head with wild type eye shape" title="fly head with wild type eye shape"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/eshape/es1.png" alt="fly head with bar eye shape" title="fly head with bar eye shape"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/eshape/es2.png" alt="fly head with eyeless eye shape" title="fly head with eyeless eye shape"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/eshape/es3.png" alt="fly head with lobe eye shape" title="fly head with lobe eye shape"></td>
+            <td style="border: none; width:130px; padding: 0px;"><img src="img/eshape/es4.png" alt="fly head with star eye shape" title="fly head with star eye shape"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="eshape" value="0" aria-selected="true" aria-label="eye shape changed to wild type" checked="true" aria-setsize="5" aria-posinset="1" onclick="dv.flyMut(dv.dFly,4,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="eshape" value="1" aria-selected="false" aria-label="eye shape changed to bar" aria-setsize="5" aria-posinset="2" onclick="dv.flyMut(dv.dFly,4,1,true)"> bar (<u>1</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="eshape" value="2" aria-selected="false" aria-label="eye shape changed to eyeless" aria-setsize="5" aria-posinset="3" onclick="dv.flyMut(dv.dFly,4,2,true)"> eyeless (<u>2</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="eshape" value="3" aria-selected="false" aria-label="eye shape changed to lobe" aria-setsize="5" aria-posinset="4" onclick="dv.flyMut(dv.dFly,4,3,true)"> lobe (<u>3</u>)</td>
+            <td style="border: none; width:130px; padding: 0px;"><input type="radio" name="eshape" value="4" aria-selected="false" aria-label="eye shape changed to star" aria-setsize="5" aria-posinset="5" onclick="dv.flyMut(dv.dFly,4,4,true)"> star (<u>4</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- wing size options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="6" aria-controls="wsizes" style="margin-top: 262px;" aria-label="options for wing size" onclick="dv.changeGroup(5)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Wing Size</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="wsizes" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wsize/wsz0.png" alt="fly with wild type wings" title="fly with wild type wings"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wsize/wsz1.png" alt="fly with apterous wings" title="fly with apterous wings"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wsize/wsz2.png" alt="fly with miniature wings" title="fly with miniature wings"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wsize/wsz3.png" alt="fly with vestigial wings" title="fly with vestigial wings"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wsize" value="0" aria-selected="true" aria-label="wing size changed to wild type" checked="true" aria-setsize="4" aria-posinset="1" onclick="dv.flyMut(dv.dFly,5,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wsize" value="1" aria-selected="false" aria-label="wing size changed to apterous" aria-setsize="4" aria-posinset="2" onclick="dv.flyMut(dv.dFly,5,1,true)"> apterous (<u>1</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wsize" value="2" aria-selected="false" aria-label="wing size changed to miniature" aria-setsize="4" aria-posinset="3" onclick="dv.flyMut(dv.dFly,5,2,true)"> miniature (<u>2</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wsize" value="3" aria-selected="false" aria-label="wing size changed to vestigial" aria-setsize="4" aria-posinset="4" onclick="dv.flyMut(dv.dFly,5,3,true)"> vestigial (<u>3</u>)</td>
+         </tr>
+      </table>
+   </div>
+ 
+   <!-- wing shape options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="7" aria-controls="wshapes" style="margin-top: 312px;" aria-label="options for wing shape" onclick="dv.changeGroup(6)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Wing Shape</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="wshapes" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:150px; padding: 0px;"><img src="img/wshape/wshp0.png" alt="wing with wild type shape" title="wing with wild type shape"></td>
+            <td style="border: none; width:150px; padding: 0px;"><img src="img/wshape/wshp1.png" alt="wing with curly shape" title="wing with curly shape"></td>
+            <td style="border: none; width:150px; padding: 0px;"><img src="img/wshape/wshp2.png" alt="wing with curved shape" title="wing with curved shape"></td>
+            <td style="border: none; width:150px; padding: 0px;"><img src="img/wshape/wshp3.png" alt="wing with dumpy shape" title="wing with dumpy shape"></td>
+            <td style="border: none; width:150px; padding: 0px;"><img src="img/wshape/wshp4.png" alt="wing with scalloped shape" title="wing with scalloped shape"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:150px; padding: 0px;"><input type="radio" name="wshape" value="0" aria-selected="true" aria-label="wing shape changed to wild type" checked="true" aria-setsize="5" aria-posinset="1" onclick="dv.flyMut(dv.dFly,6,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:150px; padding: 0px;"><input type="radio" name="wshape" value="1" aria-selected="false" aria-label="wing shape changed to curly" aria-setsize="5" aria-posinset="2" onclick="dv.flyMut(dv.dFly,6,1,true)"> curly (<u>1</u>)</td>
+            <td style="border: none; width:150px; padding: 0px;"><input type="radio" name="wshape" value="2" aria-selected="false" aria-label="wing shape changed to curved" aria-setsize="5" aria-posinset="3" onclick="dv.flyMut(dv.dFly,6,2,true)"> curved (<u>2</u>)</td>
+            <td style="border: none; width:150px; padding: 0px;"><input type="radio" name="wshape" value="3" aria-selected="false" aria-label="wing shape changed to dumpy" aria-setsize="5" aria-posinset="4" onclick="dv.flyMut(dv.dFly,6,3,true)"> dumpy (<u>3</u>)</td>
+            <td style="border: none; width:150px; padding: 0px;"><input type="radio" name="wshape" value="4" aria-selected="false" aria-label="wing shape changed to scalloped" aria-setsize="5" aria-posinset="5" onclick="dv.flyMut(dv.dFly,6,4,true)"> scalloped (<u>4</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- wing vein options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="8" aria-controls="wveins" style="margin-top: 362px;" aria-label="options for wing veins" onclick="dv.changeGroup(7)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Wing Veins</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="wveins" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wvein/wvn0.png" alt="wing with wild type veins" title="wing with wild type veins"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wvein/wvn1.png" alt="wing with no crossveins" title="wing with no crossveins"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wvein/wvn2.png" alt="wing with incomplete veins" title="wing with incomplete veins"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wvein" value="0" aria-selected="true" aria-label="wing veins changed to wild type" checked="true" aria-setsize="3" aria-posinset="1" onclick="dv.flyMut(dv.dFly,7,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wvein" value="1" aria-selected="false" aria-label="wing veins changed to crossveinless" aria-setsize="3" aria-posinset="2" onclick="dv.flyMut(dv.dFly,7,1,true)"> crossveinless (<u>1</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wvein" value="2" aria-selected="false" aria-label="wing veins changed to incomplete" aria-setsize="3" aria-posinset="3" onclick="dv.flyMut(dv.dFly,7,2,true)"> incomplete (<u>2</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- wing angle options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="9" aria-controls="wangles" style="margin-top: 412px;" aria-label="options for wing angle" onclick="dv.changeGroup(8)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Wing Angle</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="wangles" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wangle/wang0.png" alt="fly with wild type wings" title="fly with wild type wings"></td>
+            <td style="border: none; width:180px; padding: 0px;"><img src="img/wangle/wang1.png" alt="fly with dichaete wings" title="fly with dichaete wings"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wangle" value="0" aria-label="wing angle changed to wild type" aria-selected="true" checked="true" aria-setsize="2" aria-posinset="1" onclick="dv.flyMut(dv.dFly,8,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:180px; padding: 0px;"><input type="radio" name="wangle" value="1" aria-label="wing angle changed to dichaete" aria-selected="false" aria-setsize="2" aria-posinset="2" onclick="dv.flyMut(dv.dFly,8,1,true)"> dichaete (<u>1</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <!-- body color options -->
+   <button type="button" class="traitsBtn" aria-setsize="10" aria-posinset="10" aria-controls="bcolors" style="margin-top: 462px;" aria-label="options for body color" onclick="dv.changeGroup(9)"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;">Body Color</td><td style="text-align:right;">&#x2713;</td></tr></table></button>
+   <div class="trtImg" id="bcolors" style="display:none;">
+      <table role="presentation" class="traitsTbl">
+         <tr style="border: none; height: 180px; padding: 0px; vertical-align: middle;">
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc0.png" alt="fly with wild type body color" title="fly with wild type body color"></td>
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc1.png" alt="fly with black body color" title="fly with black body color"></td>
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc2.png" alt="fly with ebony body color" title="fly with ebony body color"></td>
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc3.png" alt="fly with sable body color" title="fly with sable body color"></td>
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc4.png" alt="fly with tan body color" title="fly with tan body color"></td>
+            <td style="border: none; width:140px; padding: 0px;"><img src="img/bcolor/bc5.png" alt="fly with yellow body color" title="fly with yellow body color"></td>
+         </tr>
+         <tr style="border: none; height: 30px; padding: 0px; vertical-align: top;">
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="0" aria-label="body color changed to wild type" aria-selected="true" checked="true" aria-setsize="6" aria-posinset="1" onclick="dv.flyMut(dv.dFly,9,0,true)"> wild type (<u>0</u>)</td>
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="1" aria-label="body color changed to black" aria-selected="false" aria-setsize="6" aria-posinset="2" onclick="dv.flyMut(dv.dFly,9,1,true)"> black (<u>1</u>)</td>
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="2" aria-label="body color changed to ebony" aria-selected="false" aria-setsize="6" aria-posinset="3" onclick="dv.flyMut(dv.dFly,9,2,true)"> ebony (<u>2</u>)</td>
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="3" aria-label="body color changed to sable" aria-selected="false" aria-setsize="6" aria-posinset="4" onclick="dv.flyMut(dv.dFly,9,3,true)"> sable (<u>3</u>)</td>
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="4" aria-label="body color changed to tan" aria-selected="false" aria-setsize="6" aria-posinset="5" onclick="dv.flyMut(dv.dFly,9,4,true)"> tan (<u>4</u>)</td>
+            <td style="border: none; width:140px; padding: 0px;"><input type="radio" name="bcolor" value="5" aria-label="body color changed to yellow" aria-selected="false" aria-setsize="6" aria-posinset="6" onclick="dv.flyMut(dv.dFly,9,5,true)"> yellow (<u>5</u>)</td>
+         </tr>
+      </table>
+   </div>
+
+   <button type="button" class="traitsBtn reset" aria-controls="designUI" style="margin-top: 548px;" aria-label="reset all options to wild type" onclick="dv.resetAll()"><u>R</u>eset All</button>
+
+
+   <!-- fly image canvas -->
+   <canvas role="img" class="designCnv" id="designCnv" tabindex="0" width="350px" height="350px" aria-label="female wild type" title="female wild type"></canvas>
+
+   <!-- list of traits -->
+   <div class="designList">
+      <table class="traitsList" id="traitsTbl">
+      <tr style="height: 30px" tabindex="0"><td style="font-weight:bold;text-align:left;" colspan="2">Trait List for Designed Fly</td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Sex: </td><td>female (&#9792;)</td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Bristles: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Antennae: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Eye Color: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Eye Shape: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Wing Size: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Wing Shape: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Wing Veins: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Wing Angle: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      <tr style="height: 24px" tabindex="0"><td style="width:115px">Body Color: </td><td>wild type <span aria-hidden='true'>(+)</span></td></tr>
+      </table>
+   </div> 
+
+   <button type="button" class="magnify" title="magnify fly image" aria-label="magnify fly image" id="dvMag" aria-controls=" magView" style="margin-top: 548px; left: 540px;" onclick="cntrl.magFly(cntrl.magCnv, dv.dFly, 'dvMag')"><img src="img/magnify.png"></button>
+   <button type="button" class="select" aria-controls="mateUI" style="margin-top: 548px; left: 600px; width: 300px" onclick="mv.selectFly(0, dv.dFly)"><u>S</u>elect Fly for Mating</button>
+
+
+</div>
+<!------End of Content: Design --------------------------->
+
+
+<!----- Content: Mate ------------------------------------>
+<div role="tabpanel" class="tabcontent" id="mateUI">
+
+   <div tabindex="0" id="mateTitle" style="position:absolute; top:20px; left:280px; width:400px; height:25px; border:none; font-family:'Arial', sans-serif; font-size:22pt; font-weight:bold; text-align:center;">Flies to be Mated</div>
+
+   <!-- female parent -->
+   <div id="fParentTxt" tabindex="0" style="position:absolute; top:70px; left:25px; width:350px; height:60px; border:none; font-family:'Arial', sans-serif; font-size:16pt; text-align:center; vertical-align:bottom;">No Female</div>
+   <canvas role="img" tabindex="0" id="fParentCnv" style="position:absolute; margin-top:150px; left:25px; border:none;" width="350px" height="350px" aria-label="greyed out female fly" title="greyed out female fly"></canvas>
+   <button type="button" class="magnify" id="fParentMag" aria-hidden="true" title="magnify fly image" aria-label="magnify fly image" style="margin-top: 520px; left: 75px;" onclick="cntrl.magFly(cntrl.magCnv,mv.fParent,'fParentMag')"><img src="img/magnify.png"></button>
+   <button type="button" class="select" id="fDesRem" aria-label="design a female fly for mating" style="margin-top: 520px; left: 125px; width: 150px;" onclick="dv.designFly(0)">D<u>e</u>sign Fly</button>
+
+   <!-- male parent -->
+   <div id="mParentTxt" tabindex="0" style="position:absolute; top:70px; left:583px; width:350px; height:60px; border:none; font-family:'Arial', sans-serif; font-size:16pt; text-align:center;vertical-align:bottom;">No Male</div>
+   <canvas role="img" tabindex="0" id="mParentCnv" style="position:absolute; margin-top:150px; left:583px; border:none;" width="350px" height="350px" aria-label="greyed out male fly" title="greyed out male fly"></canvas>
+   <button type="button" class="magnify" id="mParentMag" aria-hidden="true" title="magnify fly image" aria-label="magnify fly image" style="margin-top: 520px; left: 633px;" onclick="cntrl.magFly(cntrl.magCnv,mv.mParent,'mParentMag')"><img src="img/magnify.png"></button>
+   <button type="button" aria-label="design a male fly for mating" class="select" id="mDesRem" style="margin-top: 520px; left: 683px; width: 150px" onclick="dv.designFly(1)">De<u>s</u>ign Fly</button>
+
+    <!-- mate button -->
+   <button type="button" id="mateBtn" class="select" aria-disabled="true" style="margin-top: 300px; left: 405px; width: 150px" onclick="mv.mateFlies()" disabled>Mate <u>F</u>lies</button>
+
+</div>
+<!------End of Content: Mate ----------------------------->
+
+
+<!----- Content: Crosses --------------------------------->
+
+<!-- offscreen canvas for preloading checkmark image -->
+<canvas id="osCnv" width="100" height="100" style="display:none" aria-hidden="true" ></canvas>
+
+<div role="tabpanel" class="tabcontent" id="crossesUI">
+   <div class="cvAvCntnt">
+   <!-- drop down menu for cross selection -->
+      <div class="dropdown" id="cvDropdown" style="display:none">
+         <button type="button" class="dropbtn" id="selCrossView" aria-controls="crossesDropDown" onclick="cv.openList()"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;"><span class='visually-hidden'>Select Cross</span><span aria-hidden='true'><u>S</u>elect Cross</span></td><td style="text-align:right;">&#9660;</td></tr></table></button>
+         <div class="dropdown-content" id="crossesDropDown" aria-expanded="false"></div>
+      </div>
+      <!-- container for content -->
+      <div id="cvContent" style="position: relative; display: block; margin-top: -30px;">&nbsp;<br>&nbsp;<br></div>
+   </div>
+</div>
+<!------End of Content: Crosses -------------------------->
+
+
+<!----- Content: Analyze --------------------------------->
+<div role="tabpanel" class="tabcontent" id="analyzeUI">
+   <div class="cvAvCntnt">
+      <!-- drop down menu for cross selection -->
+      <div class="dropdown" id="avDropdown" style="display:none">
+         <button type="button" class="dropbtn" id="selAnalyzeView" aria-controls="analyzeDropDown" onclick="av.openList()"><table role="presentation" style="width:100%;"><tr><td style="text-align:left;"><span class='visually-hidden'>Select Cross</span><span aria-hidden='true'><u>S</u>elect Cross</span></td><td style="text-align:right;">&#9660;</td></tr></table></button>
+         <div class="dropdown-content" id="analyzeDropDown" aria-expanded="false"></div>
+      </div>
+      <div class="chbxDiv" id="avChbxSexDiv" style="display:none"><button role="checkbox" aria-checked="false" aria-labelledby="igSxLbl" type="button" class="chbx" id="igSex" onclick="av.ignoreSex()"><span id="igSxChK">&#x2713;</span></button>&nbsp;&nbsp;<span id="igSxLbl"><span class='visually-hidden'>Ignore sex of flies</span><span aria-hidden='true'>Ignore Se<u>x</u> of Flies</span></span></div>
+      <div class="chbxDiv" id="avChbxHypDiv" style="display:none"><button role="checkbox" aria-checked="false" aria-labelledby="hypLbl" type="button" class="chbx" id="hyp" onclick="av.showHideHyp(av.igSexOptions[av.dropDisplayed-1])"><span id="hypChK">&#x2713;</span></button>&nbsp;&nbsp;<span id="hypLbl"><span class='visually-hidden'>Include a test of hypothesis</span><span aria-hidden='true'>Include a Test of <u>H</u>ypothesis</span></span></div>
+      <!-- container for content -->
+      <div id="avContent" style="position: relative; min-height: 540px; display: block; margin-top: -40px; padding-right: 15px;"></div>
+   </div>
+</div>
+<!------End of Content: Analyze -------------------------->
+
+<!----- Content: Notes ----------------------------------->
+<div role="tabpanel" class="tabcontent" id="notesUI">
+   <!-- lab notes content -->
+   <div class="lvCntnt" id="labNotes">
+      <!-- export button -->
+      <button type="button" class="select" id="notesExportBtn" aria-disabled="true" style="margin-top: 20px; left: 10px; width: 250px" onclick="lv.exportNotes()" disabled><span class='visually-hidden'>Export as Web Page</span><span aria-hidden='true'><u>E</u>xport as Web Page</span></button>
+      <!-- title -->
+      <div id="lvTitle" tabindex='0' style="position:absolute; top:20px; left:280px; width:400px; height:30px; border:none; font-family:'Arial', sans-serif; font-size:18pt; font-weight:bold; text-align:center;"></div>
+      <!-- note sections loaded here -->
+      <div class="lvSections" id="lvSectns">
+
+      </div>
+   </div>
+</div>
+<!------End of Content: Notes ---------------------------->
+
+<!----- Content: Modal view for magnified fly ------------>
+<div class="magDiv" id="magView">
+   <div class="magFly">
+      <!-- close button -->
+      <button class="close" id="closeBtn" aria-label="close view of magnified fly" title="close" onclick="cntrl.closeMagView()">&#x2a2f;</button>
+      <!-- fly image canvas -->
+      <canvas class="magCnv" id="magCnv" width="624px" height="624px"></canvas>
+      <!-- fly image lab notes button -->
+      <button type="button" class="select" id="exprtBtn" aria-label="add fly image to lab notes" aria-controls="notesUI" style="margin-top: 645px; left: 211px; width: 300px" onclick="lv.addFlyToNotes(cntrl.theMagFly)">Add Fly <u>I</u>mage to Lab Notes</button>
+   </div>
+</div>
+<!------End of Content: Modal view for magnified fly ----->
+
+
+<!------End Main Div for Applet -------------------------->
+</div>
+
+</body>
+
+<!-- Mirrored from sciencecourseware.org/FlyLabJS/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 May 2024 03:27:37 GMT -->
+</html>

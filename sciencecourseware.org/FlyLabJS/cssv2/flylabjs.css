@@ -1,0 +1,572 @@
+BODY {
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14pt;
+  background-color: #595959;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+div.main {
+  background: linear-gradient(to right, #ffffff 0%, #dae9f6 66%, #b5d2ec 90%, #b4c7e7 100%);
+  position: relative;
+  margin: auto;
+  width: 960px;
+  height: 720px;
+  border: 1px solid black;
+}
+
+div.logotxt {
+  position: absolute;
+  top: 3px;
+  left: 75px;
+  width: 200px;
+  height: 60px;
+}
+
+
+span.logotxt1 {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 30pt;
+  color: #203864;
+}
+
+span.logotxt2 {
+   font-family: "Arial", sans-serif;
+   font-style: normal;
+   font-weight: bold;
+   font-size: 30pt;
+   color: #203864;
+}
+
+.menu {
+  position: absolute;
+  top: 4px;
+  left: 350px;
+  width: 600px;
+  height: 25px;
+  border: 1px solid #41719c;
+  border-radius: 6px;
+  background: white;
+  font-family: "Arial", sans-serif;
+  font-size: 13pt;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
+div.copyright {
+  position: absolute;
+  top: 75px;
+  left: 610px;
+  width: 350px;
+  height: 38px;
+  border: none;
+  font-family: "Arial", sans-serif;
+  font-size: 10pt;
+  text-align: left;
+}
+
+.tab {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #000000;
+  border-radius: 12px 12px 0px 0px;
+  background-color: #dae3f3;
+  top: 69px;
+  width: 115px;
+  height: 41px;
+  padding-top: 8px;
+  font-family: "Arial", sans-serif;
+  font-size: 16pt;
+  text-align: center;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.tab:hover,
+.tab:focus {
+  background-color: #dcffcc;
+}
+
+.tab.active {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid #000000;
+  border-bottom: none;
+  border-radius: 12px 12px 0px 0px;
+  background-color: #ffffff;
+  font-weight: bold;
+  height: 41px;
+  z-index: 2;
+  cursor: auto;
+}
+
+div.tabcontent {
+  display: none;
+  position: absolute;
+  padding-left: 10px;
+  margin-left: 0px;
+  top: 118px;
+  left: 0px;
+  width: 950px;
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background: white;
+  border: none;
+  border-top: 1px solid #000000;
+}
+
+button.traitsBtn {
+  position: absolute;
+  left: 6px;
+  width: 166px;
+  height: 38px;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 6px;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.traitsBtn:hover,
+button.traitsBtn:focus {
+  background-color: #dcffcc;
+}
+
+button.traitsBtn.reset {
+  position: absolute;
+  left: 6px;
+  width: 166px;
+  height: 38px;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 6px;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: left;
+  cursor: pointer;
+}
+
+button.traitsBtn.active {
+  background-color: #ffffff;
+  font-weight: bold;
+  cursor: auto;
+}
+
+button.traitsBtn.active:hover,
+button.traitsBtn.active:focus {
+  background-color: #ffffff;
+}
+
+button.traitsBtn.reset:hover,
+button.traitsBtn.reset:focus {
+  background-color: #dcffcc;
+}
+
+button.select {
+  position: absolute;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 6px;
+  height: 38px;
+  font-family: "Arial", sans-serif;
+  font-size: 14pt;
+  text-align: center;
+  cursor: pointer;
+}
+
+button.select:disabled {
+  cursor: auto;
+  background-color: #dae3f3;
+  color: grey;	
+}
+
+button.select:disabled:hover {
+  background-color: #dae3f3;
+}
+
+button.select:hover,
+button.select:focus {
+  background-color: #dcffcc;
+}
+
+button.select-small {
+  position: static;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 4px;
+  height: 29px;
+  width: 140px;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  text-align: center;
+  cursor: pointer;
+}
+
+button.select-small:hover,
+ button.select-small:focus {
+  background-color: #dcffcc;
+}
+
+button.magnify {
+  position: absolute;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 6px;
+  height: 38px;
+  width: 38px;
+  padding-top: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button.magnify:hover,
+ button.magnify:focus {
+  background-color: #dcffcc;
+}
+
+button.magnify-small {
+  position: static;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 4px;
+  height: 29px;
+  width: 29px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button.magnify-small:hover,
+button.magnify-small:focus {
+  background-color: #dcffcc;
+}
+
+div.trtImg {
+  position: absolute;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  left: 180px;
+  top: 12px;
+  width: 758px;
+  height: 216px;
+  text-align: center;
+}
+
+table.traitsTbl {
+  border: none;
+  border-spacing: 0px;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 0px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 11pt;
+}
+
+td.hide {
+  display: none;
+}
+
+table.traitsList{
+  margin-left: 0px;
+  margin-right:0px;
+  padding: 0px;
+  text-align: left;
+  width: 100%;
+}
+
+.designCnv {
+  position: absolute;
+  border: none;
+  left: 180px;
+  top: 240px;
+}
+
+div.designList {
+   position: absolute;
+   border: none;
+   left: 540px;
+   top: 235px;
+   width: 398px;
+   height: 300px;
+   font-family: "Arial", sans-serif;
+   font-size: 14pt;
+}
+
+div.magDiv {
+  display: none;
+  position: relative;
+  margin: auto;
+  width: 960px;
+  height: 720px;
+  z-index: 3;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+div.magFly {
+  display: block;
+  position: absolute;
+  left: 119px;
+  top: 10px;
+  width: 722px;
+  height: 700px;
+  background-color: white;
+  border: 1px solid #41719c;
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.5s;
+  animation-name: zoom;
+  animation-duration: 0.5s;
+  animation-direction: normal;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1)} 
+  to {transform: scale(1)}
+}
+
+.magCnv {
+  position: absolute;
+  border: none;
+  left: 49px;
+  top: 5px;
+  border: none;
+}
+
+button.close {
+  position: absolute;
+  background-color: #ffffff;
+  border: none;
+  top: 1px;
+  right: 5px;
+  height: 50px;
+  width: 40px;
+  text-align: center;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30pt;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button.close:hover,
+button.close:focus {
+  background-color: #dcffcc;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+div.cross {
+  display: none;
+  position: relative;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 15px;
+  top: 0px;
+  left: 0px;
+  width: 950px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: white;
+  border: none;
+}
+
+div.cvAvCntnt {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-left: 0px;
+  top: 0px;
+  left: 0px;
+  width: 950px;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: white;
+  border: none;
+}
+
+.crossTitle {
+  font-family: "Arial", sans-serif;
+  font-size: 16pt;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  color: black;
+  height: 32px;
+  margin: auto;
+  padding: 0px 0px 0px 0px;
+}
+
+table.crosses {
+  border: none;
+  border-spacing: 0px;
+  margin: auto;
+  padding: 0px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+}
+
+div.fly {
+  display: inline-block;
+  border: none;
+  width: 200px;
+  padding: 0px 10px 0px 10px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+}
+
+.crossFlyCnvs {
+  margin: auto;
+  border: none;
+}
+
+div.chbxDiv {
+  position: relative;
+  display: inline-block;
+  margin-top: 22px;
+  margin-left: 30px;
+  left: 180px;
+  background-color: #ffffff;
+  border: none;
+  height: 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 14pt;
+  text-align: left;
+  z-index: 1;
+}
+
+button.chbx {
+  position: relative;
+  display: inline-block;
+  background-color: #dae3f3;
+  border: 1px solid #41719c;
+  border-radius: 4px;
+  height: 24px;
+  width: 24px;
+  font-family: "Arial", sans-serif;
+  font-size: 11pt;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+button.chbx:hover,
+button.chbx:focus {
+  background-color: #dcffcc;
+}
+
+table.results {
+  border-collapse: collapse;
+  border: 1px solid black;
+  margin: auto;
+  margin-bottom: 6px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+}
+
+td.results, th.results {
+  border: 1px solid black;
+  height: 30px;
+  min-width: 90px;
+  padding: 0px 6px 0px 6px;
+  vertical-align: middle;
+  font-weight: normal;
+}
+
+tr.results:nth-child(odd) {
+  background-color: #dae3f3;
+}
+
+.hypInput {
+  border: 1px solid black;
+  height: 18px;
+  width: 80px;
+  background-color: transparent;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+}
+
+div.hypRes {
+  display: none;
+  position: relative;
+  padding-top: 0px;
+  margin: auto;
+  width: 600px;
+  background: white;
+  border: none;
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+}
+
+div.lvCntnt {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-left: 0px;
+  top: 0px;
+  left: 0px;
+  width: 950px;
+  max-height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: white;
+  border: none;
+}
+
+div.lvSections {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-top: 80px;
+  width: 950px;
+  background: white;
+  border: none;
+}
+
+div.lvSect {
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-left: 0px;
+  width: 935px;
+  background: white;
+  border-top: 1px solid #41719c;
+}
+
+abbr {
+  font-variant: none;
+}
+
+.visually-hidden { 
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+    clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+    white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}
